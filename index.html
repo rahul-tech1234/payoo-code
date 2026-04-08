@@ -36,6 +36,29 @@
         </style>
     </head>
     <body class="min-h-screen max-w-md bg-base-200 mx-auto">
-        <h1>hello lets start payoo</h1>
+        <div class="logo w-[200px] pt-32 mx-auto">
+            <img src="assets/Logo-full.png" alt="" />
+        </div>
+        <div class="form p-10 mx-auto">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label font-bold text-neutral">Mobile Number</label>
+                        <input id="input-number" maxlength="11" minlength="11" type="text" class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3" placeholder="Enter your 11 digit number" />
+                        <label class="label font-bold text-neutral">4 Digit Pin</label>
+                        <input
+                        id="input-pin"
+                        maxlength="4"
+                            type="password"
+                            class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
+                            placeholder="Enter 4 Digit Pin"
+                        />
+                        
+                        <button id="logInBtn" class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold">Login</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <script src="script/logIn.js"></script>
     </body>
 </html>
