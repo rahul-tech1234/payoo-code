@@ -77,6 +77,7 @@
                     <!-- 1st btn -->
                     <button
                         class="btn flex-col h-full py-4 btn-primary btn-soft"
+                        onclick="showOnly('add-money')"
                     >
                         <img src="../assets/opt-1.png" alt="" />
                         <p>Add Money</p>
@@ -84,6 +85,7 @@
                     <!-- 2st btn -->
                     <button
                         class="btn flex-col h-full py-4 btn-primary btn-soft"
+                        onclick="showOnly('cashout')"
                     >
                         <img src="../assets/opt-2.png" alt="" />
                         <p>Cashout</p>
@@ -91,6 +93,7 @@
                     <!-- 3st btn -->
                     <button
                         class="btn flex-col h-full py-4 btn-primary btn-soft"
+                        onclick="showOnly('money-transfer')"
                     >
                         <img src="../assets/opt-3.png" alt="" />
                         <p>Transfer Money</p>
@@ -104,6 +107,7 @@
                     </button>
                     <!-- 5th btn -->
                     <button
+                        onclick="showOnly('pay-bill')"
                         class="btn flex-col h-full py-4 btn-primary btn-soft"
                     >
                         <img src="../assets/opt-5.png" alt="" />
@@ -111,6 +115,7 @@
                     </button>
                     <!-- 6th btn -->
                     <button
+                        onclick="showOnly('history')"
                         class="btn flex-col h-full py-4 btn-primary btn-soft"
                     >
                         <img src="../assets/opt-6.png" alt="" />
@@ -118,119 +123,245 @@
                     </button>
                 </div>
             </section>
+            <!-- Add Money Section -->
+            <section id="add-money" class="w-11/12 mx-auto py-5">
+                <h2 class="text-xl font-bold mb-5">Add Money</h2>
+
+                <div class="card bg-base-100 w-full shadow rounded-2xl">
+                    <div class="card-body">
+                        <fieldset class="fieldset">
+                            <label class="label font-bold text-neutral"
+                                >Select Bank</label
+                            >
+                            <select
+                                id="add-money-bank"
+                                class="select w-full bg-base-200 rounded-full"
+                            >
+                                <option disabled selected>Select a Bank</option>
+                                <option value="DBBL">DBBL</option>
+                                <option value="IBBL">IBBL</option>
+                                <option value="City">City Bank</option>
+                            </select>
+                            <br />
+                            <label class="label font-bold text-neutral"
+                                >Bank Account Number</label
+                            >
+                            <input
+                                id="add-money-number"
+                                maxlength="11"
+                                minlength="11"
+                                type="text"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter 11 digit account number"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Amount to Add</label
+                            >
+                            <input
+                                id="add-money-amount"
+                                type="number"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Add Amount to withdraw"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Pin Number</label
+                            >
+                            <input
+                                id="add-money-pin"
+                                maxlength="4"
+                                type="password"
+                                class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
+                                placeholder="Enter 4 Digit Pin"
+                            />
+
+                            <button
+                                id="add-money-btn"
+                                class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
+                            >
+                                Add Money
+                            </button>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+            <!-- Cashout Section -->
+            <section id="cashout" class="hidden">
+                <h2 class="text-xl font-bold mb-5">Cashout</h2>
+                <div class="card bg-base-100 w-full shadow rounded-2xl">
+                    <div class="card-body">
+                        <fieldset class="fieldset">
+                            <label class="label font-bold text-neutral"
+                                >Agent Number</label
+                            >
+                            <input
+                                id="cashout-number"
+                                maxlength="11"
+                                minlength="11"
+                                type="text"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter 11 digit number"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Amount</label
+                            >
+                            <input
+                                id="amount"
+                                type="number"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter amount to withdraw"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Pin Number</label
+                            >
+                            <input
+                                id="cahout-pin"
+                                maxlength="4"
+                                type="password"
+                                class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
+                                placeholder="Enter 4 Digit Pin"
+                            />
+
+                            <button
+                                id="cahout-btn"
+                                class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
+                            >
+                                Withdraw Money
+                            </button>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+            <!-- Transactions Section -->
+            <section id="history" class="w-11/12 mx-auto py-5 hidden">
+                <h2 class="text-xl font-bold mb-5">Transactions</h2>
+                <div
+                    class="transaction-card p-5 bg-base-100 space-y-2"
+                    id="history-container"
+                ></div>
+            </section>
+            <!-- Transfer Money -->
+            <section id="money-transfer" class="hidden">
+                <h2 class="text-xl font-bold mb-5">Transfer Money</h2>
+                <div class="card bg-base-100 w-full shadow rounded-2xl">
+                    <div class="card-body">
+                        <fieldset class="fieldset">
+                            <label class="label font-bold text-neutral"
+                                >User Account Number</label
+                            >
+                            <input
+                                id="user-account"
+                                maxlength="11"
+                                minlength="11"
+                                type="text"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter 11 digit number"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Amount</label
+                            >
+                            <input
+                                id="transfer-amount"
+                                type="number"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter amount to transfer"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Pin Number</label
+                            >
+                            <input
+                                id="transfer-pin"
+                                maxlength="4"
+                                type="password"
+                                class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
+                                placeholder="Enter 4 Digit Pin"
+                            />
+
+                            <button
+                                id="transfer-btn"
+                                class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
+                            >
+                                Send Now
+                            </button>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+            <!-- Pay Bill Section -->
+            <section id="pay-bill" class="hidden">
+                <h2 class="text-xl font-bold mb-5">Pay Bill</h2>
+
+                <div class="card bg-base-100 w-full shadow rounded-2xl">
+                    <div class="card-body">
+                        <fieldset class="fieldset">
+                            <label class="label font-bold text-neutral"
+                                >Select To Pay</label
+                            >
+                            <select
+                                id="pay-select"
+                                class="select w-full bg-base-200 rounded-full"
+                            >
+                                <option disabled selected>Select To Pay</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="gas">Gas</option>
+                                <option value="internet">Internet</option>
+                                <option value="tv">TV</option>
+                            </select>
+                            <br />
+                            <label class="label font-bold text-neutral"
+                                >Biller Account Number</label
+                            >
+                            <input
+                                id="bill-account-number"
+                                maxlength="11"
+                                minlength="11"
+                                type="text"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Enter account number"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Amount to Pay</label
+                            >
+                            <input
+                                id="amount-to-pay"
+                                type="number"
+                                class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
+                                placeholder="Add Amount to pay"
+                            />
+
+                            <label class="label font-bold text-neutral"
+                                >Pin Number</label
+                            >
+                            <input
+                                id="pay-money-pin"
+                                maxlength="4"
+                                type="password"
+                                class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
+                                placeholder="Enter 4 Digit Pin"
+                            />
+
+                            <button
+                                id="pay-money-btn"
+                                class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
+                            >
+                                Pay Now
+                            </button>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
         </main>
-        <section id="add-money" class="w-11/12 mx-auto py-5">
-            <h2 class="text-xl font-bold mb-5">Add Money</h2>
 
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label font-bold text-neutral"
-                            >Select Bank</label
-                        >
-                        <select
-                            id="add-money-bank"
-                            class="select w-full bg-base-200 rounded-full"
-                        >
-                            <option disabled selected>Select a Bank</option>
-                            <option value="DBBL">DBBL</option>
-                            <option value="IBBL">IBBL</option>
-                            <option value="City">City Bank</option>
-                        </select>
-                        <br />
-                        <label class="label font-bold text-neutral"
-                            >Bank Account Number</label
-                        >
-                        <input
-                            id="add-money-number"
-                            maxlength="11"
-                            minlength="11"
-                            type="text"
-                            class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
-                            placeholder="Enter 11 digit account number"
-                        />
-
-                        <label class="label font-bold text-neutral"
-                            >Amount to Add</label
-                        >
-                        <input
-                            id="add-money-amount"
-                            type="number"
-                            class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
-                            placeholder="Add Amount to withdraw"
-                        />
-
-                        <label class="label font-bold text-neutral"
-                            >Pin Number</label
-                        >
-                        <input
-                            id="add-money-pin"
-                            maxlength="4"
-                            type="password"
-                            class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
-                            placeholder="Enter 4 Digit Pin"
-                        />
-
-                        <button
-                            id="add-money-btn"
-                            class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
-                        >
-                            Add Money
-                        </button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-        <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Cashout</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label font-bold text-neutral"
-                            >Agent Number</label
-                        >
-                        <input
-                            id="cashout-number"
-                            maxlength="11"
-                            minlength="11"
-                            type="text"
-                            class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
-                            placeholder="Enter 11 digit number"
-                        />
-
-                        <label class="label font-bold text-neutral"
-                            >Amount</label
-                        >
-                        <input
-                            id="amount"
-                            type="number"
-                            class="input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3 w-full"
-                            placeholder="Enter amount to withdraw"
-                        />
-
-                        <label class="label font-bold text-neutral"
-                            >Pin Number</label
-                        >
-                        <input
-                            id="cahout-pin"
-                            maxlength="4"
-                            type="password"
-                            class="w-full input inline-block rounded-full bg-base-200 py-4 pl-5 mb-3"
-                            placeholder="Enter 4 Digit Pin"
-                        />
-
-                        <button
-                            id="cahout-btn"
-                            class="btn btn-primary mt-4 rounded-full text-[20px] font-semibold"
-                        >
-                            Withdraw Money
-                        </button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
         <script src="../script/matchine.js"></script>
         <script src="../script/addMoney.js"></script>
         <script src="../script/cashout.js"></script>
+        <script src="../script/transfer.js"></script>
+        <script src="../script/pay.js"></script>
     </body>
 </html>

@@ -25,6 +25,18 @@ document.getElementById("cahout-btn").addEventListener("click", function () {
     } else {
         alert("Cashout Successfull");
         setBalance(newBalance);
+
+        // 1 - history-container ke dore niya asbho
+        const history = document.getElementById("history-container");
+        //2 - new div creat korbo
+        const newHistory = document.createElement("div");
+        //3 - new div er inner Html add korbo
+        newHistory.innerHTML = `<div class="transaction-card p-5 bg-base-100">
+         Cashout Success form
+         ${cashoutNumber},  Withdrow ${cashoutAmount}Tk   ${new Date()}
+         </div>`;
+        //4 - history-container e newDiv append korbo
+        history.append(newHistory);
     }
 });
 
